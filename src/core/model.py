@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.model_name_here_oops_i_mean_ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.pipeline import Pipeline
 import joblib
