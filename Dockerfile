@@ -12,7 +12,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Training typically happens outside or as a separate step
-# RUN python -c "from src.core.model import ChurnModel; ChurnModel().train('data/customer_data.csv')"
+# Bake a trained model into the image so a fresh container serves
+# predictions immediately (trained on the 8-row demo dataset;
+# retrain on client data for paid use). The API refuses to start
+# without API_KEY set (see .env.example / src/main.py).
+RUN python train_model.py data/customer_data.csv
 
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 8000
+
+# API_KEY must be provided at runtime (Render: env vars, or docker -e).
+CMD ["sh", "-c", "uvicorn src.main:app --host 0.0.0.0 --port ${PORT:-8000}"]

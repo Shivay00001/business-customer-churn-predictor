@@ -1,9 +1,13 @@
-version: '3.8'
-
 services:
   churn-predictor:
     build: .
     ports:
       - "8000:8000"
+    environment:
+      # Generate with: python -c "import secrets; print(secrets.token_urlsafe(32))"
+      API_KEY: ${API_KEY:?API_KEY must be set, e.g. API_KEY=... docker compose up}
+      MODEL_PATH: /app/models/churn_v1.pkl
+      ALLOWED_ORIGINS: ""
+      DEBUG: "false"
     volumes:
       - ./models:/app/models
