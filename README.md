@@ -131,3 +131,7 @@ Dockerfile         Builds with a baked-in demo model; needs API_KEY at runtime
 ## License
 
 MIT — see `LICENSE`.
+
+## Built by VisionQuantech
+
+Part of the [VisionQuantech](https://visionquantech.com/) AI automation studio. See [AI voice agents for business calls](https://visionquantech.com/ai-voice-agents) and the guide to [AI phone answering for veterinary clinics](https://visionquantech.com/blog/ai-phone-answering-service-for-veterinary-clinics).
